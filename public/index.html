@@ -1,0 +1,250 @@
+<!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="myBlog">
+<head>
+	<!-- META -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+	<title>Cool Website Name Here Cuz</title>
+
+	<!-- SCROLLS -->
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+	<style type="text/css">
+		html {
+			background: url('http://wallpapercave.com/wp/1lz7ELB.jpg') no-repeat center center fixed;
+			 -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+		}
+
+		#top_container {
+			margin-top: 4%;
+			height: 50%;
+			width: 100%;
+			border-radius: 20px;
+		}
+
+		.mySlides {display:none;}
+
+		#main_container{
+			margin-left: 5%;
+			height: auto;
+			width: 77%; 
+		}
+
+		#right_container {
+			position: absolute;
+   			top:85%;
+   			right:0;
+			height: 50vh; 
+			width: 30%;
+		}
+
+		#top_container img {
+			width: 100%;
+			height: 400px;
+		}
+
+		#article {
+			border-radius: 40px;
+			margin-top: 5%;
+			width: 80%;
+			height: 20vh;
+			margin-left: 10%;
+		}
+
+	</style>
+
+	<!-- SPELLS -->
+
+	<link rel="stylesheet" type="text/css" href="css/normalize.css">
+	<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+
+	<script src="js/controllers/main.js"></script> <!-- load up our controller -->
+	<script src="js/services/articles.js"></script> <!-- load our todo service -->
+	<script src="js/core.js"></script> <!-- load our main application -->
+
+
+</head>
+<!-- SET THE CONTROLLER -->
+	
+<body ng-controller="mainController" style=" background-color: rgba(255,255,255,.5);">
+
+	    <!-- Navigation -->
+	    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	        <div class="container">
+	             <!-- Brand and toggle get grouped for better mobile display -->
+	            <div class="navbar-header">
+	                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+	                    <span class="sr-only">Toggle navigation</span>
+	                    <span class="icon-bar">n</span>
+	                    <span class="icon-bar">j</span>
+	                    <span class="icon-bar">j</span>
+	                </button>
+	                <a class="navbar-brand" href="#">Cool Name Here</a>
+	            </div>
+	            <!-- Collect the nav links, forms, and other content for toggling -->
+	            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	                <ul class="nav navbar-nav">
+	                    <li>
+	                        <a href="#">Gaming</a>
+	                    </li>
+	                    <li>
+	                        <a href="#">Anime</a>
+	                    </li>
+	                    <li>
+	                        <a href="#">Music</a>
+	                    </li>
+	                    <li>
+	                        <a href="#">About</a>
+	                    </li>
+	                    <li>
+	                        <a href="#">Contact</a>
+	                    </li>
+	                </ul>
+	            </div>
+	            <!-- /.navbar-collapse -->
+	        </div>
+	        <!-- /.container -->
+	    </nav>
+
+
+<!-- change slideshow -->
+	    <div id="top_container">
+			<div class="w3-content w3-section" ng-repeat="article in articles | filter: {article_type: 'Music'}">
+			  <img class="mySlides" style="border-radius: 20px;"  ng-src="{{article.article_largethumbnail}}">
+			  <div class=" mySlideText w3-display-bottomleft w3-container w3-padding-16 w3-black" style="position: relative; color:white;">
+    				{{article.article}}
+  				</div>
+			  
+			</div>
+
+	    </div> 
+
+	    <div id="main_container" ng-view>
+	    	
+	    	<div class="w3-card-4" style="position: relative; width:80%; margin-top:5%; margin-left: 10%;" ng-repeat="article in articles">
+				<header style="background-color: rgba(255,255,255,.5); margin-left: 2%;">
+					<a style="background-image: url('{{article.article_thumbnail}}'); color:white; font-size:18.71px;" ng-href='pages/{{article.article_link}}'>{{article.article}}</a>
+				</header>	
+
+				<div class="w3-container">
+
+					<img src="{{article.article_thumbnail}}" alt="image" style="width:30%; " class="w3-margin-right w3-left">
+					<p style="color: white;">{{article.article_subhead}} </p>
+
+					<p style="position: absolute;right:0px; bottom: 0px" ng-model="type">{{article.article_type}} <img src="img/eye.jpg" style="width: 10px; height: 10px"> {{article.clicks}}</p>
+
+
+
+				</div>
+	    	</div>
+
+	    </div>
+
+	    <div id="right_container"></div>
+
+	    <footer> All Rights Reserved Anthony Snow</footer>
+
+
+	   
+</body>
+
+</html>
+
+<!-- 		
+
+		h1{
+			display: inline-block;
+			top: 0;
+			position: absolute;
+
+		}
+
+		body {
+			background-color: white;
+		}
+
+		#main_container{
+			margin-top: 4%;
+			height: 100vh;
+			width: 100%; 
+			border: 2px solid yellow;
+		}
+
+		#recent_news {
+			border: 2px solid red;
+			height: 100vh; 
+			width: 70%;
+			background-color: rgba(255,255,255,.8);
+		}
+
+		#article_image {
+			border: 2px solid orange;
+			height: 100%; 
+			width: 30%; 
+			display: inline-block;
+		}
+
+		#article_box {
+			border: 2px solid blue;
+			height: 25%;
+			position: relative;
+			border-radius: 10px;
+			background-color:#696969;
+		}
+
+		#article_box img {
+			max-height: 100%;
+			max-width: 100%;
+			height: auto%; 
+			width:auto;
+			margin: auto;
+		}
+
+		#article_type {
+			border: 2px solid white;
+			height: 20px; 
+			width: 100px;
+			position: absolute;
+			float: right;
+			bottom: 0;
+			right: 0;
+			}
+
+		#article_title {
+			height: 75%;
+			width: 20%;
+			border: 2px solid violet; 
+			float: middle;
+		} -->
+
+
+	<script>
+		var myIndex = 0;
+		carousel();
+
+		function carousel() {
+		    var i;
+		    var x = document.getElementsByClassName("mySlides");
+		    var y = document.getElementsByClassName("mySlideText"); 
+		    for (i = 0; i < x.length; i++) {
+		       x[i].style.display = "none";  
+		       y[i].style.display = "none"; 
+		    }
+		    myIndex++;
+		    if (myIndex > x.length) {myIndex = 1}    
+		    x[myIndex-1].style.display = "block"; 
+		    y[myIndex-1].style.display = "block"; 
+		    setTimeout(carousel, 4000); // Change image every 2 seconds
+		}
+	</script>

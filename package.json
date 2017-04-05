@@ -1,0 +1,14 @@
+{
+  "name"         : "SnowmansBoomBoomRoom",
+  "version"      : "0.0.0",
+  "description"  : "Blog Site",
+  "main"         : "server.js",
+  "author"       : "Anthony",
+  "dependencies" : {
+    "express"         : "latest",
+    "mongoose"        : "latest",
+    "morgan"          : "latest",
+    "body-parser"     : "latest",
+    "method-override" : "latest"
+  }
+}
